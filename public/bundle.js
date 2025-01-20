@@ -74095,13 +74095,13 @@
           })),
         a(this, this.settingBtn, 800, 0.3, 1),
         this.add
-          .image(80, 80, "button-fullscreen")
+          .image(-110, -110, "button-fullscreen")
           .setInteractive({ cursor: "pointer" })
           .on("pointerdown", () => {
             this.scale.isFullscreen
               ? this.scale.stopFullscreen()
               : this.scale.startFullscreen();
-          });
+          })
     }
     update(t, e) {}
   }
