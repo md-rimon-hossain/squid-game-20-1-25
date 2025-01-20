@@ -3,6 +3,7 @@ import { useUser } from "./UserContext";
 import logoImage from './images/claim.png'; // Importing the logo image
 import checkboxImage from './images/check3.png'; // Importing the checkbox image
 import middleImage from './images/star.png'; // Importing the new middle image for finalPage2
+import { main } from './images';
 
 interface overlaypageProps {
   closeOverlay: () => void;
@@ -160,6 +161,11 @@ const overlaypage: React.FC<overlaypageProps> = ({ closeOverlay }) => {
           <h1 className="text-2xl font-bold">We owe you GAME!</h1>
           <p className="text-base mt-1">HERE YOU GO</p>
         </div>
+          <img
+            src={main}
+            alt="Loading Character"
+            className="w-24 h-24 mb-4  rounded-full"
+          />
 
         {/* Central Image (replacing the 10) */}
         <div className="flex flex-col items-center">

@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useMemo,
   useLayoutEffect,
-  useRef
+  useRef,
 } from "react";
 import { useUser } from "./UserContext";
 
@@ -14,7 +14,7 @@ import {
   main,
   dailyReward1,
   invite,
-  claimDailyCombo
+  claimDailyCombo,
 } from "./images";
 import Friends from "./icons/Friends";
 import Coins from "./icons/Coins";
@@ -46,12 +46,12 @@ const App: React.FC = () => {
     "Legendary",
     "Master",
     "GrandMaster",
-    "Lord"
+    "Lord",
   ];
 
   const levelMinPoints = [
     0, 5000, 25000, 100000, 1000000, 2000000, 10000000, 50000000, 100000000,
-    1000000000
+    1000000000,
   ];
 
   const [levelIndex, setLevelIndex] = useState(6);
@@ -59,7 +59,6 @@ const App: React.FC = () => {
   const [clicks, setClicks] = useState<{ id: number; x: number; y: number }[]>(
     []
   );
-
 
   // handle the score from the iframe game ========================
   const [score, setScore] = useState(0);
@@ -88,12 +87,8 @@ const App: React.FC = () => {
       setScore(0);
     }
   }, [score, setPoints, points]);
-  
 
-
-
-
-  console.log(score)
+  console.log(score);
 
   const pointsToAdd = 1;
 
@@ -159,9 +154,9 @@ const App: React.FC = () => {
       await fetch("https://python-backend-5wr2.onrender.com/update_user", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ UserId: userID, totalstim: points })
+        body: JSON.stringify({ UserId: userID, totalstim: points }),
       });
       console.log("Points saved:", points);
       setLastSavedPoints(points); // Update lastSavedPoints after saving
@@ -179,7 +174,7 @@ const App: React.FC = () => {
     const user = {
       username: initData.user?.username || "Default Username",
       userid: initData.user?.id || "202376895",
-      startparam: initData.start_param || ""
+      startparam: initData.start_param || "",
     };
 
     setFirstName(user.username);
@@ -222,13 +217,13 @@ const App: React.FC = () => {
     fetch("https://python-backend-5wr2.onrender.com/add_user", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         UserId: userid,
         invitedby: invitedBy === null ? undefined : invitedBy,
-        Username: username
-      })
+        Username: username,
+      }),
     })
       .then((response) => {
         if (response.ok) {
@@ -434,7 +429,7 @@ const App: React.FC = () => {
       await Promise.all([
         loadPoints(userID),
         // Ensure the loading page stays at least 2 seconds
-        new Promise((resolve) => setTimeout(resolve, 4000))
+        new Promise((resolve) => setTimeout(resolve, 4000)),
       ]);
 
       // Set loading to false after all data is loaded
@@ -456,25 +451,27 @@ const App: React.FC = () => {
       ) : (
         <>
           {/* Background Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-br  from-[#FF3D7C] via-[#FF819E] to-[#F6E5D3]"></div>
+          {/* <div className="absolute inset-0 bg-gradient-to-br  from-[#FF3D7C] via-[#FF819E] to-[#F6E5D3]"></div> */}
           {/* <div className="absolute inset-0 bg-gradient-to-tl from-[#e54b81] via-[#e262b5] to-[#e54b81] opacity-30"></div> */}
 
-          <div className="relative pt-2 md:pt-14 w-full text-white h-screen font-bold flex flex-col max-w-sm">
+          <div className="relative  md:pt-14 w-full text-white h-screen font-bold flex flex-col ">
             {/* Conditional Rendering of Pages */}
-            <div className="relative w-full h-full  flex flex-col items-center">
+            <div className="relative w-full h-full flex justify-center flex-col items-center">
               <iframe
                 src="/game.html"
                 title="Squid Game"
                 onLoad={handleIframeLoad}
-                className="bg-black md:mt-[-56px]"
+                className={`bg-black w-full transition-all duration-500 ${
+                  activePage === "home"
+                    ? "h-[100vh] opacity-100 pb-20"
+                    : "h-0 opacity-0"
+                }`}
                 style={{
-                  width: 380,
-                  height: activePage === "home" ? "100%" : 0,
                   border: "none",
-                  opacity: activePage === "home" ? 100 : 0
                 }}
               />
             </div>
+
             {/* <GameComponent /> */}
 
             {activePage === "home" && (
@@ -672,7 +669,7 @@ const App: React.FC = () => {
               style={{
                 top: `${click.y - 42}px`,
                 left: `${click.x - 28}px`,
-                animation: `float 1s ease-out`
+                animation: `float 1s ease-out`,
               }}
               onAnimationEnd={() => handleAnimationEnd(click.id)}
             >

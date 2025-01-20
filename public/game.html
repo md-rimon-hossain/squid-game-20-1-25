@@ -1,31 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">     -->
     <title>Game</title>
     <style>
-      *, html, body {
-        margin: 0px;
-        padding: 0px;
-        overflow: hidden;
-      }
+      *,
+      html,
       body {
-        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      body {
+        background-color: #000000;
       }
       @font-face {
-        font-family: 'font';
-        src: url('./assets/font/font.woff2') format('woff2');
+        font-family: "font";
+        src: url("./assets/font/font.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
         outline: #000000;
-        
       }
 
-      .fontload{
-        visibility:hidden;
+      .fontload {
+        visibility: hidden;
         position: absolute;
         left: -9999px;
         text-shadow: -3px 2px 9px #000000;
@@ -35,13 +45,15 @@
         border: none;
       }
 
-      
- 
+      canvas {
+        height: 100% !important;
+        width: 100% !important;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class="fontload" style="font-family: 'font';">.</div>
+  <body>
+    <div class="fontload" style="font-family: 'font'">.</div>
     <script src="./bundle.js"></script>
-</body>
+  </body>
 </html>
